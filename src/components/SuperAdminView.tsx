@@ -215,7 +215,7 @@ export const SuperAdminView: React.FC = () => {
             <span>Purge DB & Re-seed</span>
           </button>
 
-          <div style={{ display: 'flex', gap: 6, background: 'var(--bg-card)', padding: 4, borderRadius: 10, border: '1px solid var(--border-color)' }}>
+          <div className="admin-tab-group" style={{ display: 'flex', gap: 6, background: 'var(--bg-card)', padding: 4, borderRadius: 10, border: '1px solid var(--border-color)' }}>
             <button
               onClick={() => setActiveAdminTab('telemetry')}
               style={{

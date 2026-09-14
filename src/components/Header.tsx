@@ -45,7 +45,7 @@ export const Header: React.FC<HeaderProps> = ({
             title="Toggle Menu"
             aria-label="Toggle Navigation Menu"
           >
-            <Menu size={18} />
+            <Menu size={16} />
           </button>
         )}
 

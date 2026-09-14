@@ -3170,12 +3170,13 @@ select:focus,
     animation: fadeIn 0.2s ease-out;
   }
 
-  /* Native Mobile Touch Target Hamburger & Close Buttons */
-  .mobile-hamburger-btn {
+  /* Native Mobile Touch Target Hamburger & Icon Buttons (Identical Height & Width) */
+  .mobile-hamburger-btn,
+  .top-header .icon-btn {
     display: flex !important;
-    width: 38px !important;
-    height: 38px !important;
-    border-radius: 10px !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: var(--radius-md) !important;
     background: var(--bg-card-elevated) !important;
     border: 1px solid var(--border-color) !important;
     color: var(--text-main) !important;
@@ -3184,10 +3185,11 @@ select:focus,
     cursor: pointer !important;
     flex-shrink: 0 !important;
     transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+    box-shadow: none !important;
   }
 
-  .mobile-hamburger-btn:active {
+  .mobile-hamburger-btn:active,
+  .top-header .icon-btn:active {
     transform: scale(0.92) !important;
     background: var(--bg-card-active) !important;
   }
@@ -3242,7 +3244,7 @@ select:focus,
   /* Native App Header Bar */
   .top-header {
     padding: 0 12px !important;
-    height: 54px !important;
+    height: 52px !important;
     gap: 8px !important;
     justify-content: space-between !important;
     background: rgba(15, 23, 42, 0.88) !important;
@@ -3282,16 +3284,52 @@ select:focus,
 
   .auth-header-btn {
     padding: 2px !important;
-    width: 34px !important;
-    height: 34px !important;
+    width: 32px !important;
+    height: 32px !important;
     border-radius: 50% !important;
     justify-content: center !important;
   }
 
   .auth-header-btn .user-avatar-badge {
-    width: 28px !important;
-    height: 28px !important;
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 11px !important;
+  }
+
+  /* Notification Drawer — Full Screen Bottom Sheet on Mobile */
+  .notification-drawer-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 90vh !important;
+    max-height: 90vh !important;
+    border-radius: 20px 20px 0 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    bottom: 0 !important;
+  }
+
+  .notification-drawer-header {
+    padding: 14px 16px !important;
+  }
+
+  .notification-drawer-header h3 {
+    font-size: 16px !important;
+  }
+
+  .notification-item {
+    padding: 12px 14px !important;
+  }
+
+  .notification-item-title {
+    font-size: 13px !important;
+  }
+
+  .notification-item-message {
     font-size: 12px !important;
+  }
+
+  .notification-item-time {
+    font-size: 10px !important;
   }
 
   /* Native Padding & Card Grid Adjustments */
@@ -5330,16 +5368,16 @@ select:focus,
     padding: 4px 10px !important;
   }
 
-  /* Icon Buttons */
+  /* Icon Buttons — Match hamburger at 32x32 */
   .icon-btn {
-    width: 30px !important;
-    height: 30px !important;
+    width: 32px !important;
+    height: 32px !important;
     border-radius: var(--radius-md) !important;
   }
 
   .icon-btn svg {
-    width: 15px !important;
-    height: 15px !important;
+    width: 16px !important;
+    height: 16px !important;
   }
 
   /* Conflict Engine */

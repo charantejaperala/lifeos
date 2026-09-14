@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { UserModel, IUser } from '../models/User.model';
-import { config } from '../config/env';
+import { UserModel, IUser } from '../models/User.model.js';
+import { config } from '../config/env.js';
 
 function createApiError(message: string, statusCode: number) {
   const err = new Error(message) as any;

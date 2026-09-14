@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { config } from './env';
+import { config } from './env.js';
 
 export const connectDB = async (): Promise<void> => {
   try {
@@ -14,7 +14,7 @@ export const connectDB = async (): Promise<void> => {
     
     // Seed default admin and demo user accounts if not present
     try {
-      const { UserModel } = await import('../models/User.model');
+      const { UserModel } = await import('../models/User.model.js');
       const bcrypt = (await import('bcryptjs')).default;
 
       // 1. Seed Super Admin Account

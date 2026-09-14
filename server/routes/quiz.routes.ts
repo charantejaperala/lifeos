@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { QuizController } from '../controllers/quiz.controller';
-import { authenticateJWT } from '../middlewares/auth.middleware';
-import { aiRateLimit } from '../middlewares/rateLimit.middleware';
+import { QuizController } from '../controllers/quiz.controller.js';
+import { authenticateJWT } from '../middlewares/auth.middleware.js';
+import { aiRateLimit } from '../middlewares/rateLimit.middleware.js';
 
 const router = Router();
 

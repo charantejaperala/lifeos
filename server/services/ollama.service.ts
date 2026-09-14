@@ -1,4 +1,4 @@
-import { config } from '../config/env';
+import { config } from '../config/env.js';
 
 export class OllamaService {
   private static activeModel: string = config.ollamaModel || 'llama3';

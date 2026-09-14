@@ -2,9 +2,9 @@ import express, { Application } from 'express';
 import cors from 'cors';
 import path from 'path';
 import fs from 'fs';
-import apiRouter from './routes';
-import { errorHandler } from './middlewares/error.middleware';
-import { generalApiRateLimit } from './middlewares/rateLimit.middleware';
+import apiRouter from './routes/index.js';
+import { errorHandler } from './middlewares/error.middleware.js';
+import { generalApiRateLimit } from './middlewares/rateLimit.middleware.js';
 
 const app: Application = express();
 

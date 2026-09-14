@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import { UserModel } from '../models/User.model';
-import { GoalModel } from '../models/Goal.model';
-import { LifeEventModel } from '../models/LifeEvent.model';
-import { OllamaService } from '../services/ollama.service';
+import { UserModel } from '../models/User.model.js';
+import { GoalModel } from '../models/Goal.model.js';
+import { LifeEventModel } from '../models/LifeEvent.model.js';
+import { OllamaService } from '../services/ollama.service.js';
 import mongoose from 'mongoose';
 
 export class AdminController {

@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { GoalController } from '../controllers/goal.controller';
-import { authenticateJWT } from '../middlewares/auth.middleware';
+import { GoalController } from '../controllers/goal.controller.js';
+import { authenticateJWT } from '../middlewares/auth.middleware.js';
 
 const router = Router();
 

@@ -1,15 +1,15 @@
 import { Router } from 'express';
 import mongoose from 'mongoose';
-import authRoutes from './auth.routes';
-import goalRoutes from './goal.routes';
-import lifeEventRoutes from './lifeEvent.routes';
-import categoryRoutes from './category.routes';
-import aiRoutes from './ai.routes';
-import quizRoutes from './quiz.routes';
-import adminRoutes from './admin.routes';
-import { GoalModel } from '../models/Goal.model';
-import { LifeEventModel } from '../models/LifeEvent.model';
-import { CategoryModel } from '../models/Category.model';
+import authRoutes from './auth.routes.js';
+import goalRoutes from './goal.routes.js';
+import lifeEventRoutes from './lifeEvent.routes.js';
+import categoryRoutes from './category.routes.js';
+import aiRoutes from './ai.routes.js';
+import quizRoutes from './quiz.routes.js';
+import adminRoutes from './admin.routes.js';
+import { GoalModel } from '../models/Goal.model.js';
+import { LifeEventModel } from '../models/LifeEvent.model.js';
+import { CategoryModel } from '../models/Category.model.js';
 
 const apiRouter = Router();
 

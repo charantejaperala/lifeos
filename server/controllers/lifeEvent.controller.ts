@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { LifeEventService } from '../services/lifeEvent.service';
+import { LifeEventService } from '../services/lifeEvent.service.js';
 
 export class LifeEventController {
   static async getAllLifeEvents(req: Request, res: Response, next: NextFunction) {

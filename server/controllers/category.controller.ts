@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { CategoryService } from '../services/category.service';
+import { CategoryService } from '../services/category.service.js';
 
 export class CategoryController {
   static async getAllCategories(req: Request, res: Response, next: NextFunction) {

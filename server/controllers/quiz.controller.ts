@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { OllamaService } from '../services/ollama.service';
-import { QuizResultModel } from '../models/QuizResult.model';
+import { OllamaService } from '../services/ollama.service.js';
+import { QuizResultModel } from '../models/QuizResult.model.js';
 
 export class QuizController {
   static async generateQuiz(req: Request, res: Response, next: NextFunction) {

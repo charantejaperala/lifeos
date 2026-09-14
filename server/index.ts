@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
-import app from './app';
-import { connectDB } from './config/db';
-import { config } from './config/env';
+import app from './app.js';
+import { connectDB } from './config/db.js';
+import { config } from './config/env.js';
 
 // Connect to Database & Start HTTP Server
 connectDB().catch((err) => console.error('MongoDB initial connection warning:', err.message));

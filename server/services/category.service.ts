@@ -1,4 +1,4 @@
-import { CategoryModel, ICategory } from '../models/Category.model';
+import { CategoryModel, ICategory } from '../models/Category.model.js';
 
 export class CategoryService {
   static async getAllCategories(): Promise<ICategory[]> {

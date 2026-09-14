@@ -1,4 +1,4 @@
-import { LifeEventModel, ILifeEvent } from '../models/LifeEvent.model';
+import { LifeEventModel, ILifeEvent } from '../models/LifeEvent.model.js';
 
 export class LifeEventService {
   static async getAllLifeEvents(): Promise<ILifeEvent[]> {

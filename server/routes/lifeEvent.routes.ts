@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { LifeEventController } from '../controllers/lifeEvent.controller';
-import { authenticateJWT } from '../middlewares/auth.middleware';
+import { LifeEventController } from '../controllers/lifeEvent.controller.js';
+import { authenticateJWT } from '../middlewares/auth.middleware.js';
 
 const router = Router();
 

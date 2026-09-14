@@ -1,4 +1,4 @@
-import { GoalModel, IGoal } from '../models/Goal.model';
+import { GoalModel, IGoal } from '../models/Goal.model.js';
 
 export class GoalService {
   static async getAllGoals(): Promise<IGoal[]> {

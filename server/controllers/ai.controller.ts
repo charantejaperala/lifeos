@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { OllamaService } from '../services/ollama.service';
+import { OllamaService } from '../services/ollama.service.js';
 
 export class AIController {
   static async getModel(req: Request, res: Response, next: NextFunction) {

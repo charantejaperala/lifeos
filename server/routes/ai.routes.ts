@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { AIController } from '../controllers/ai.controller';
-import { authenticateJWT } from '../middlewares/auth.middleware';
-import { aiRateLimit } from '../middlewares/rateLimit.middleware';
+import { AIController } from '../controllers/ai.controller.js';
+import { authenticateJWT } from '../middlewares/auth.middleware.js';
+import { aiRateLimit } from '../middlewares/rateLimit.middleware.js';
 
 const router = Router();
 

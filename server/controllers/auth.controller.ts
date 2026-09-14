@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { AuthService } from '../services/auth.service';
-import { AuthRequest } from '../middlewares/auth.middleware';
+import { AuthService } from '../services/auth.service.js';
+import { AuthRequest } from '../middlewares/auth.middleware.js';
 
 export class AuthController {
   static async signup(req: Request, res: Response, next: NextFunction) {

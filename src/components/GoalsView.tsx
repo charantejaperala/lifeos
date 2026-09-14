@@ -272,8 +272,9 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
 
       {/* List Mode View */}
       {viewMode === 'list' && (
-        <div className="metric-card" style={{ padding: 0, overflow: 'hidden' }}>
-          <table className="budget-table">
+        <div className="metric-card" style={{ padding: 0, overflow: 'auto' }}>
+          <div className="budget-table-container">
+            <table className="budget-table">
             <thead>
               <tr>
                 <th>Goal Name</th>
@@ -353,6 +354,7 @@ export const GoalsView: React.FC<GoalsViewProps> = ({
             </tbody>
           </table>
         </div>
+      </div>
       )}
 
       {/* Custom Category Creator Modal */}

@@ -228,22 +228,22 @@ export const GoalDetailModal: React.FC<GoalDetailModalProps> = ({
 
         {/* Modal Navigation Tabs */}
         <div className="modal-tabs-bar" style={{ display: 'flex', gap: 4, borderBottom: '1px solid var(--border-color)', padding: '0 12px', backgroundColor: 'var(--bg-main)', overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
-          <button className={`nav-item ${activeTab === 'overview' ? 'active' : ''}`} style={{ width: 'auto', padding: '8px 12px', borderRadius: '8px 8px 0 0' }} onClick={() => setActiveTab('overview')}>
+          <button className={`nav-item ${activeTab === 'overview' ? 'active' : ''}`} style={{ width: 'auto', flexShrink: 0, whiteSpace: 'nowrap', padding: '8px 12px', borderRadius: '8px 8px 0 0' }} onClick={() => setActiveTab('overview')}>
             <TrendingUp size={15} /> Overview
           </button>
-          <button className={`nav-item ${activeTab === 'subgoals' ? 'active' : ''}`} style={{ width: 'auto', padding: '8px 12px', borderRadius: '8px 8px 0 0' }} onClick={() => setActiveTab('subgoals')}>
+          <button className={`nav-item ${activeTab === 'subgoals' ? 'active' : ''}`} style={{ width: 'auto', flexShrink: 0, whiteSpace: 'nowrap', padding: '8px 12px', borderRadius: '8px 8px 0 0' }} onClick={() => setActiveTab('subgoals')}>
             <Layers size={15} /> Sub-Goals ({goal.subGoals.length})
           </button>
-          <button className={`nav-item ${activeTab === 'budget' ? 'active' : ''}`} style={{ width: 'auto', padding: '8px 12px', borderRadius: '8px 8px 0 0' }} onClick={() => setActiveTab('budget')}>
+          <button className={`nav-item ${activeTab === 'budget' ? 'active' : ''}`} style={{ width: 'auto', flexShrink: 0, whiteSpace: 'nowrap', padding: '8px 12px', borderRadius: '8px 8px 0 0' }} onClick={() => setActiveTab('budget')}>
             <PieChart size={15} /> Itemized Budget
           </button>
-          <button className={`nav-item ${activeTab === 'funding' ? 'active' : ''}`} style={{ width: 'auto', padding: '8px 12px', borderRadius: '8px 8px 0 0' }} onClick={() => setActiveTab('funding')}>
+          <button className={`nav-item ${activeTab === 'funding' ? 'active' : ''}`} style={{ width: 'auto', flexShrink: 0, whiteSpace: 'nowrap', padding: '8px 12px', borderRadius: '8px 8px 0 0' }} onClick={() => setActiveTab('funding')}>
             <Coins size={15} /> Funding Sources
           </button>
-          <button className={`nav-item ${activeTab === 'contributions' ? 'active' : ''}`} style={{ width: 'auto', padding: '8px 12px', borderRadius: '8px 8px 0 0' }} onClick={() => setActiveTab('contributions')}>
+          <button className={`nav-item ${activeTab === 'contributions' ? 'active' : ''}`} style={{ width: 'auto', flexShrink: 0, whiteSpace: 'nowrap', padding: '8px 12px', borderRadius: '8px 8px 0 0' }} onClick={() => setActiveTab('contributions')}>
             <History size={15} /> Contributions Log
           </button>
-          <button className={`nav-item ${activeTab === 'documents' ? 'active' : ''}`} style={{ width: 'auto', padding: '8px 12px', borderRadius: '8px 8px 0 0' }} onClick={() => setActiveTab('documents')}>
+          <button className={`nav-item ${activeTab === 'documents' ? 'active' : ''}`} style={{ width: 'auto', flexShrink: 0, whiteSpace: 'nowrap', padding: '8px 12px', borderRadius: '8px 8px 0 0' }} onClick={() => setActiveTab('documents')}>
             <FileText size={15} /> Document Vault ({(goal.attachments || []).length})
           </button>
         </div>

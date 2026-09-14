@@ -276,7 +276,7 @@ export const FinanceQuizView: React.FC = () => {
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
           <div className="quiz-header-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 14px', background: badge.bg, borderRadius: 20, border: `1px solid ${badge.color}`, fontSize: '12px', lineHeight: 1.2 }}>
             <Award size={16} color={badge.color} style={{ flexShrink: 0 }} />
-            <span style={{ fontWeight: 700, color: badge.color, whiteSpace: 'nowrap' }}>
+            <span style={{ fontWeight: 700, color: badge.color }}>
               {badge.title}
             </span>
           </div>

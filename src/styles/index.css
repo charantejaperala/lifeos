@@ -3451,6 +3451,34 @@ select:focus,
     line-height: 1 !important;
   }
 
+  /* Light Theme Overrides for Mobile Header & Bottom Nav */
+  [data-theme='light'] .top-header {
+    background: rgba(255, 255, 255, 0.94) !important;
+    border-bottom-color: #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .mobile-bottom-nav {
+    background: rgba(255, 255, 255, 0.96) !important;
+    border-top-color: #e2e8f0 !important;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  [data-theme='light'] .mobile-bottom-nav-item {
+    color: #64748b !important;
+  }
+
+  [data-theme='light'] .mobile-bottom-nav-item.active {
+    color: #2563eb !important;
+  }
+
+  [data-theme='light'] .mobile-action-circle {
+    border-color: #ffffff !important;
+  }
+
+  [data-theme='light'] .mobile-action-label {
+    color: #2563eb !important;
+  }
+
   /* Mobile modals: clean native bottom sheet */
   .modal-overlay,
   .auth-modal-overlay {
@@ -5902,7 +5930,7 @@ h3 {
 }
 
 /* Responsive Table & Grid Wrappers */
-.table-responsive, .table-container {
+.table-responsive, .table-container, .budget-table-container {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -5913,13 +5941,144 @@ h3 {
     grid-template-columns: 1fr !important;
   }
 
-  .table-responsive table {
-    min-width: 600px;
+  .table-responsive table, .budget-table-container table {
+    min-width: 580px;
   }
 
-  .modal-content, .drawer-content {
-    max-width: 95vw !important;
-    margin: 0 auto;
+  /* Prevent iOS Auto-Zoom on Form Inputs */
+  .form-select,
+  .form-control,
+  .form-input,
+  input:not([type="checkbox"]):not([type="radio"]):not(.search-input),
+  select,
+  textarea {
+    font-size: 16px !important;
+    min-height: 40px !important;
+    border-radius: 10px !important;
+  }
+
+  /* Touch Targets for Mobile Buttons */
+  .btn-primary,
+  .btn-secondary,
+  .btn-danger {
+    min-height: 38px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+  }
+
+  .btn-primary svg,
+  .btn-secondary svg,
+  .btn-danger svg {
+    width: 15px !important;
+    height: 15px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Native Mobile Confirm Modal Bottom Sheet */
+  .custom-confirm-overlay {
+    padding: 0 !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+  }
+
+  .custom-confirm-card {
+    width: 100% !important;
+    max-width: 100vw !important;
+    border-radius: 24px 24px 0 0 !important;
+    padding: 20px 18px max(env(safe-area-inset-bottom, 0px), 24px) !important;
+    margin: 0 !important;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5) !important;
+    animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .custom-confirm-header {
+    gap: 12px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .custom-confirm-header h3 {
+    font-size: 16.5px !important;
+    font-weight: 800 !important;
+  }
+
+  .custom-confirm-header p {
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+  }
+
+  .custom-confirm-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 10px !important;
+    margin-top: 18px !important;
+  }
+
+  .custom-confirm-actions button {
+    flex: 1 !important;
+    height: 44px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    border-radius: 12px !important;
+  }
+
+  /* Native Toast Stack Position above Mobile Bottom Nav */
+  .custom-toast-container {
+    left: 12px !important;
+    right: 12px !important;
+    bottom: max(env(safe-area-inset-bottom, 0px), 74px) !important;
+    max-width: none !important;
+    gap: 8px !important;
+  }
+
+  .custom-toast-item {
+    padding: 10px 14px !important;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
+  }
+
+  .custom-toast-item .toast-icon svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  /* Native Mobile Bottom Sheet Modals */
+  .modal-card,
+  .auth-modal-card,
+  .widget-modal-card,
+  .goal-modal-card,
+  .ask-ai-modal-card,
+  .quick-action-modal-card {
+    max-width: 100vw !important;
+    width: 100% !important;
+    margin: 0 !important;
+    border-radius: 24px 24px 0 0 !important;
+    max-height: 88vh !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  .modal-header h2,
+  .auth-modal-title,
+  .widget-modal-title {
+    font-size: 17px !important;
+    font-weight: 800 !important;
+  }
+
+  .modal-header p,
+  .modal-subtitle {
+    font-size: 12px !important;
+  }
+
+  .modal-body {
+    padding: 14px 16px !important;
+    font-size: 13.5px !important;
   }
 }
 

@@ -99,38 +99,40 @@ export const AnalyticsView: React.FC<AnalyticsViewProps> = ({ goals, currency })
               Category-wise Breakdown
             </h3>
             {Object.keys(categorySummary).length > 0 ? (
-              <table className="budget-table">
-                <thead>
-                  <tr>
-                    <th>Category</th>
-                    <th>Goals</th>
-                    <th>Total Saved</th>
-                    <th>Total Target</th>
-                    <th>Progress</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {Object.entries(categorySummary).map(([cat, data]) => {
-                    const pct = data.target > 0 ? Math.round((data.saved / data.target) * 100) : 0;
-                    return (
-                      <tr key={cat}>
-                        <td style={{ fontWeight: 700 }}>{cat}</td>
-                        <td>{data.count}</td>
-                        <td>{formatCurrency(data.saved, currency)}</td>
-                        <td style={{ fontWeight: 700 }}>{formatCurrency(data.target, currency)}</td>
-                        <td>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                            <div style={{ flex: 1, height: 6, background: 'var(--bg-main)', borderRadius: 3, overflow: 'hidden', minWidth: 60 }}>
-                              <div style={{ width: `${pct}%`, height: '100%', background: pct >= 75 ? '#10b981' : pct >= 40 ? '#f59e0b' : '#ef4444', borderRadius: 3, transition: 'width 0.5s ease' }} />
+              <div className="budget-table-container">
+                <table className="budget-table">
+                  <thead>
+                    <tr>
+                      <th>Category</th>
+                      <th>Goals</th>
+                      <th>Total Saved</th>
+                      <th>Total Target</th>
+                      <th>Progress</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Object.entries(categorySummary).map(([cat, data]) => {
+                      const pct = data.target > 0 ? Math.round((data.saved / data.target) * 100) : 0;
+                      return (
+                        <tr key={cat}>
+                          <td style={{ fontWeight: 700 }}>{cat}</td>
+                          <td>{data.count}</td>
+                          <td>{formatCurrency(data.saved, currency)}</td>
+                          <td style={{ fontWeight: 700 }}>{formatCurrency(data.target, currency)}</td>
+                          <td>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                              <div style={{ flex: 1, height: 6, background: 'var(--bg-main)', borderRadius: 3, overflow: 'hidden', minWidth: 60 }}>
+                                <div style={{ width: `${pct}%`, height: '100%', background: pct >= 75 ? '#10b981' : pct >= 40 ? '#f59e0b' : '#ef4444', borderRadius: 3, transition: 'width 0.5s ease' }} />
+                              </div>
+                              <span style={{ fontWeight: 800, fontSize: 11, color: pct >= 75 ? '#10b981' : pct >= 40 ? '#f59e0b' : '#ef4444' }}>{pct}%</span>
                             </div>
-                            <span style={{ fontWeight: 800, fontSize: 11, color: pct >= 75 ? '#10b981' : pct >= 40 ? '#f59e0b' : '#ef4444' }}>{pct}%</span>
-                          </div>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
             ) : (
               <p style={{ fontSize: 12, color: 'var(--text-muted)', textAlign: 'center', padding: 16 }}>
                 No category data available yet.

@@ -43,12 +43,16 @@ export const LifeOSLogo: React.FC<LifeOSLogoProps> = ({
       {showText && (
         <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
           <span
+            className="lifeos-logo-text"
             style={{
-              fontSize: size >= 32 ? 18 : size >= 26 ? 15 : 13,
+              fontSize: size >= 32 ? 18 : size >= 26 ? 15 : 13.5,
               fontWeight: 900,
               color: 'var(--text-main)',
-              letterSpacing: '0.4px',
-              lineHeight: 1.1,
+              letterSpacing: '0.5px',
+              lineHeight: 1,
+              background: 'linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
             }}
           >
             LIFEOS

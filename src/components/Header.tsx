@@ -43,18 +43,19 @@ export const Header: React.FC<HeaderProps> = ({
             className="mobile-hamburger-btn"
             onClick={toggleMobileMenu}
             title="Toggle Menu"
+            aria-label="Toggle Navigation Menu"
           >
-            <Menu size={16} />
+            <Menu size={18} />
           </button>
         )}
 
         <div 
           className="mobile-brand-logo"
           onClick={() => onNavigateTab?.('dashboard')}
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}
           title="Go to Dashboard"
         >
-          <LifeOSLogo size={22} showText={false} showSubtitle={false} />
+          <LifeOSLogo size={24} showText={true} showSubtitle={false} />
         </div>
 
         <div className="search-box" onClick={openAskAI}>
@@ -72,7 +73,7 @@ export const Header: React.FC<HeaderProps> = ({
 
       <div className="header-right">
         <button
-          className="btn-secondary header-ai-btn"
+          className="btn-secondary header-ai-btn desktop-only"
           onClick={openAskAI}
         >
           <Sparkles size={14} color="#2563eb" />

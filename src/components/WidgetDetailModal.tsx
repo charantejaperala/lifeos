@@ -98,7 +98,7 @@ export const WidgetDetailModal: React.FC<WidgetDetailModalProps> = ({
             </div>
 
             <h4 style={{ fontSize: 14, fontWeight: 700, marginBottom: 12, color: 'var(--text-main)' }}>Historical Net Worth Growth Curve</h4>
-            <div style={{ padding: 16, background: 'var(--bg-main)', borderRadius: 12, border: '1px solid var(--border-color)', marginBottom: 20 }}>
+            <div style={{ padding: 16, background: 'var(--bg-card-elevated)', borderRadius: 12, border: '1px solid var(--border-color)', marginBottom: 20 }}>
               <svg width="100%" height="120" viewBox="0 0 500 120" preserveAspectRatio="none">
                 <defs>
                   <linearGradient id="nwGrad" x1="0" y1="0" x2="0" y2="1">
@@ -157,7 +157,7 @@ export const WidgetDetailModal: React.FC<WidgetDetailModalProps> = ({
                 { name: 'Fixed Deposits & Govt Debt', amt: calcAssets * 0.124, weight: '12.4%', color: '#a855f7', desc: 'Bank FDs, PPF, & Senior Citizen Savings' },
                 { name: 'Liquid Cash & Sweep-in Reserves', amt: calcAssets * 0.068, weight: '6.8%', color: '#06b6d4', desc: 'High-yield liquid savings & emergency fund' },
               ].map((item, idx) => (
-                <div key={idx} style={{ padding: 12, borderRadius: 10, background: 'var(--bg-main)', border: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div key={idx} style={{ padding: 12, borderRadius: 10, background: 'var(--bg-card-elevated)', border: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                       <span style={{ width: 10, height: 10, borderRadius: '50%', background: item.color, display: 'inline-block' }} />
@@ -198,7 +198,7 @@ export const WidgetDetailModal: React.FC<WidgetDetailModalProps> = ({
                 { name: 'Vehicle / Car Loan', principal: calcLiabilities * 0.12, emi: 10000, rate: '9.2% p.a.', tenor: '2 yrs remaining', status: 'ON TIME' },
                 { name: 'Credit Card Statement Balance', principal: calcLiabilities * 0.03, emi: 0, rate: '0% (Paid in full)', tenor: 'Due in 12 days', status: 'PAID' },
               ].map((loan, idx) => (
-                <div key={idx} style={{ padding: 14, borderRadius: 10, background: 'var(--bg-main)', border: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div key={idx} style={{ padding: 14, borderRadius: 10, background: 'var(--bg-card-elevated)', border: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
                     <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-main)' }}>{loan.name}</div>
                     <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 2 }}>Interest: {loan.rate} • {loan.tenor}</div>
@@ -249,7 +249,7 @@ export const WidgetDetailModal: React.FC<WidgetDetailModalProps> = ({
                 { source: 'Freelance & Technical Consulting', amt: calcIncome * 0.12, cat: 'Professional', freq: 'Bi-weekly' },
                 { source: 'Dividend Yields & Interest Income', amt: calcIncome * 0.06, cat: 'Investments', freq: 'Quarterly' },
               ].map((inc, idx) => (
-                <div key={idx} style={{ padding: 12, borderRadius: 10, background: 'var(--bg-main)', border: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div key={idx} style={{ padding: 12, borderRadius: 10, background: 'var(--bg-card-elevated)', border: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
                     <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-main)' }}>{inc.source}</div>
                     <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 2 }}>{inc.cat} • Frequency: {inc.freq}</div>
@@ -284,7 +284,7 @@ export const WidgetDetailModal: React.FC<WidgetDetailModalProps> = ({
                 { cat: 'Goal Investments & SIPs', amt: calcExpenses * 0.28, target: '20%', color: '#10b981' },
                 { cat: 'Discretionary Wants & Travel', amt: calcExpenses * 0.17, target: '30%', color: '#f59e0b' },
               ].map((exp, idx) => (
-                <div key={idx} style={{ padding: 12, borderRadius: 10, background: 'var(--bg-main)', border: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div key={idx} style={{ padding: 12, borderRadius: 10, background: 'var(--bg-card-elevated)', border: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
                     <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-main)' }}>{exp.cat}</div>
                     <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 2 }}>Target Allocation: {exp.target}</div>
@@ -351,7 +351,7 @@ export const WidgetDetailModal: React.FC<WidgetDetailModalProps> = ({
                 { title: 'Health Insurance Premium', due: 'Due in 14 days (28 Sep)', amt: formatCurrency(18000, currency), cat: 'Insurance', status: 'PENDING', color: '#3b82f6' },
                 { title: 'Car Loan EMI', due: 'Due in 20 days (04 Oct)', amt: formatCurrency(10000, currency), cat: 'Loan EMI', status: 'AUTO-DEBIT', color: '#a855f7' },
               ].map((item, idx) => (
-                <div key={idx} style={{ padding: 14, borderRadius: 10, background: 'var(--bg-main)', border: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div key={idx} style={{ padding: 14, borderRadius: 10, background: 'var(--bg-card-elevated)', border: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
                     <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-main)' }}>{item.title}</div>
                     <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 2 }}>{item.due} • {item.cat}</div>
@@ -384,7 +384,7 @@ export const WidgetDetailModal: React.FC<WidgetDetailModalProps> = ({
 
             <h4 style={{ fontSize: 14, fontWeight: 700, marginBottom: 12, color: 'var(--text-main)' }}>Diagnostic Metric Breakdown</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 20 }}>
-              <div style={{ padding: 14, borderRadius: 10, background: 'var(--bg-main)', border: '1px solid var(--border-color)' }}>
+              <div style={{ padding: 14, borderRadius: 10, background: 'var(--bg-card-elevated)', border: '1px solid var(--border-color)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
                   <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-main)' }}>Emergency Liquidity Pool</span>
                   <span style={{ fontSize: 12, fontWeight: 800, color: '#f59e0b' }}>10% (1.5 / 6 Months Buffer)</span>
@@ -395,7 +395,7 @@ export const WidgetDetailModal: React.FC<WidgetDetailModalProps> = ({
                 <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 6 }}>Recommendation: Boost liquid savings to cover at least 6 months of expenses ({formatCurrency(calcExpenses * 6, currency)}).</div>
               </div>
 
-              <div style={{ padding: 14, borderRadius: 10, background: 'var(--bg-main)', border: '1px solid var(--border-color)' }}>
+              <div style={{ padding: 14, borderRadius: 10, background: 'var(--bg-card-elevated)', border: '1px solid var(--border-color)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
                   <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-main)' }}>Debt Service Coverage (DTI)</span>
                   <span style={{ fontSize: 12, fontWeight: 800, color: '#ef4444' }}>85% (High Debt Leverage)</span>
@@ -428,37 +428,29 @@ export const WidgetDetailModal: React.FC<WidgetDetailModalProps> = ({
   };
 
   return (
-    <div className="modal-backdrop animate-fade-in" style={{ zIndex: 1100 }}>
+    <div className="modal-overlay animate-fade-in" onClick={onClose} style={{ zIndex: 1100 }}>
       <div 
-        className="modal-container"
-        style={{ 
-          maxWidth: 680, 
-          width: '94%', 
-          maxHeight: '88vh', 
-          overflowY: 'auto',
-          background: 'var(--bg-card)',
-          border: '1px solid var(--border-color)',
-          borderRadius: 18,
-          boxShadow: '0 20px 50px rgba(0,0,0,0.6)',
-          padding: 24
-        }}
+        className="modal-card animate-scale-up" 
+        onClick={(e) => e.stopPropagation()}
       >
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20, paddingBottom: 12, borderBottom: '1px solid var(--border-color)' }}>
-          <h2 style={{ fontSize: 18, fontWeight: 900, color: 'var(--text-main)', margin: 0, display: 'flex', alignItems: 'center', gap: 8 }}>
+        <div className="modal-header">
+          <h2 style={{ fontSize: 16, fontWeight: 800, color: 'var(--text-main)', margin: 0, display: 'flex', alignItems: 'center', gap: 8 }}>
             {getTitle()}
           </h2>
           <button 
             className="icon-btn" 
             onClick={onClose}
-            style={{ width: 32, height: 32, borderRadius: '50%', background: 'rgba(255,255,255,0.06)', border: 'none', color: 'var(--text-main)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            title="Close Modal"
           >
             <X size={18} />
           </button>
         </div>
 
-        {renderContent()}
+        <div className="modal-body">
+          {renderContent()}
+        </div>
 
-        <div style={{ marginTop: 24, paddingTop: 14, borderTop: '1px solid var(--border-color)', display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
+        <div className="modal-footer">
           <button className="btn-secondary" onClick={onClose}>
             Close
           </button>
@@ -467,3 +459,4 @@ export const WidgetDetailModal: React.FC<WidgetDetailModalProps> = ({
     </div>
   );
 };
+

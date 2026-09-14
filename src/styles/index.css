@@ -3129,19 +3129,20 @@ select:focus,
   }
 }
 
-/* Mobile & Tablet (max 900px) — Sidebar drawer */
+/* Mobile & Tablet (max 900px) — Native Mobile Layout & Drawer */
 @media (max-width: 900px) {
   .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
-    width: 260px;
-    z-index: 100;
+    width: 275px;
+    z-index: 400;
     transform: translateX(-100%);
-    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 12px 0 36px rgba(0, 0, 0, 0.6);
     height: 100vh;
     height: 100dvh;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .sidebar-header {
@@ -3162,29 +3163,68 @@ select:focus,
     display: block;
     position: fixed;
     inset: 0;
-    z-index: 90;
-    background: rgba(5, 8, 16, 0.7);
-    backdrop-filter: blur(4px);
+    z-index: 390;
+    background: rgba(5, 8, 16, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: fadeIn 0.2s ease-out;
   }
 
-  .mobile-hamburger-btn,
+  /* Native Mobile Touch Target Hamburger & Close Buttons */
+  .mobile-hamburger-btn {
+    display: flex !important;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 10px !important;
+    background: var(--bg-card-elevated) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-main) !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+    transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .mobile-hamburger-btn:active {
+    transform: scale(0.92) !important;
+    background: var(--bg-card-active) !important;
+  }
+
   .mobile-close-btn {
     display: flex !important;
-    width: 30px !important;
-    height: 30px !important;
-    border-radius: var(--radius-md) !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: var(--text-main) !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    flex-shrink: 0 !important;
+  }
+
+  .mobile-close-btn:active {
+    transform: scale(0.92) !important;
+    background: rgba(255, 255, 255, 0.2) !important;
   }
 
   .mobile-brand-logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
   }
 
   .mobile-only-fx {
     display: inline-flex !important;
     font-size: 11px !important;
-    padding: 4px 8px !important;
+    padding: 4px 10px !important;
+    border-radius: 9999px !important;
+    height: 30px !important;
+    align-items: center !important;
   }
 
   .mobile-only-location {
@@ -3199,32 +3239,37 @@ select:focus,
     display: none !important;
   }
 
+  /* Native App Header Bar */
   .top-header {
-    padding: 0 8px !important;
-    height: 48px !important;
-    gap: 6px !important;
+    padding: 0 12px !important;
+    height: 54px !important;
+    gap: 8px !important;
     justify-content: space-between !important;
+    background: rgba(15, 23, 42, 0.88) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 80 !important;
   }
 
   .header-left {
-    gap: 6px !important;
+    gap: 10px !important;
     flex-shrink: 0 !important;
+    align-items: center !important;
   }
 
   .header-right {
-    gap: 4px !important;
+    gap: 6px !important;
     flex-shrink: 0 !important;
+    align-items: center !important;
   }
 
-  .header-role-switcher {
-    padding: 0 4px !important;
+  .header-role-badge {
+    padding: 3px 8px !important;
     height: 28px !important;
-  }
-
-  .header-role-switcher select {
-    font-size: 11px !important;
-    max-width: 80px !important;
-    text-overflow: ellipsis !important;
+    font-size: 10px !important;
   }
 
   .header-export-btn,
@@ -3235,42 +3280,89 @@ select:focus,
     display: none !important;
   }
 
+  .auth-header-btn {
+    padding: 2px !important;
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 50% !important;
+    justify-content: center !important;
+  }
+
+  .auth-header-btn .user-avatar-badge {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 12px !important;
+  }
+
+  /* Native Padding & Card Grid Adjustments */
   .content-area {
-    padding: 12px 10px;
-    gap: 14px;
-    padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px)) !important;
+    padding: 14px 12px !important;
+    gap: 14px !important;
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  .page-title {
+    font-size: 20px !important;
+    letter-spacing: -0.2px !important;
+  }
+
+  .page-subtitle {
+    font-size: 12px !important;
   }
 
   .metrics-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .metric-card {
+    padding: 14px 12px !important;
+    border-radius: 14px !important;
+  }
+
+  .metric-title {
+    font-size: 11px !important;
+  }
+
+  .metric-value {
+    font-size: 20px !important;
+    letter-spacing: -0.3px !important;
+  }
+
+  .metric-subtitle {
+    font-size: 10px !important;
   }
 
   .dashboard-charts-row {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
   }
 
   .net-worth-chart {
-    grid-column: span 1;
+    grid-column: span 1 !important;
   }
 
   .ai-assistant-card {
-    grid-column: span 1;
+    grid-column: span 1 !important;
   }
 
   .dashboard-bottom-row {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
   }
 
   .sidebar-column {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 
   .goals-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .goal-card {
+    padding: 14px 12px !important;
+    border-radius: 14px !important;
   }
 
   .main-wrapper {
@@ -3292,7 +3384,7 @@ select:focus,
     height: 64px !important;
     background: rgba(15, 23, 42, 0.94) !important;
     border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-    z-index: 85 !important;
+    z-index: 300 !important;
     padding: 0 !important;
     box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.4) !important;
     backdrop-filter: blur(20px) !important;
@@ -3365,15 +3457,16 @@ select:focus,
     padding: 0 !important;
     align-items: flex-end !important;
     justify-content: center !important;
+    z-index: 500 !important;
   }
 
   .modal-card {
     max-width: 100vw !important;
     width: 100% !important;
     margin: 0 !important;
-    border-radius: 20px 20px 0 0 !important;
-    max-height: 94vh !important;
-    height: 94vh !important;
+    border-radius: 24px 24px 0 0 !important;
+    max-height: 92vh !important;
+    height: 92vh !important;
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
     animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -3382,14 +3475,14 @@ select:focus,
   .auth-modal-card {
     max-width: 100vw !important;
     width: 100% !important;
-    border-radius: 20px 20px 0 0 !important;
+    border-radius: 24px 24px 0 0 !important;
     margin: 0 !important;
   }
 
   .modal-body,
   .auth-modal-body {
     padding: 14px !important;
-    max-height: calc(90vh - 90px) !important;
+    max-height: calc(88vh - 80px) !important;
   }
 
   .modal-header,
@@ -3401,11 +3494,13 @@ select:focus,
     padding: 10px 16px !important;
     flex-wrap: wrap;
     gap: 8px;
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), 12px) !important;
   }
 
   .modal-footer button {
     flex: 1;
     min-width: 110px;
+    height: 42px !important;
   }
 
   .form-grid {
@@ -3437,6 +3532,7 @@ select:focus,
     font-size: 12px;
     padding: 8px 12px;
     white-space: nowrap;
+    height: 40px !important;
   }
 }
 

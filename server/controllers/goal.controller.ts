@@ -22,7 +22,8 @@ export class GoalController {
 
   static async updateGoal(req: Request, res: Response, next: NextFunction) {
     try {
-      const updated = await GoalService.updateGoal(req.params.id, req.body);
+      const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+      const updated = await GoalService.updateGoal(id, req.body);
       res.json(updated);
     } catch (err) {
       next(err);
@@ -31,7 +32,8 @@ export class GoalController {
 
   static async deleteGoal(req: Request, res: Response, next: NextFunction) {
     try {
-      await GoalService.deleteGoal(req.params.id);
+      const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+      await GoalService.deleteGoal(id);
       res.json({ message: 'Goal deleted successfully' });
     } catch (err) {
       next(err);

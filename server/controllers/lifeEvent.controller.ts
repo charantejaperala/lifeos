@@ -22,7 +22,8 @@ export class LifeEventController {
 
   static async deleteLifeEvent(req: Request, res: Response, next: NextFunction) {
     try {
-      await LifeEventService.deleteLifeEvent(req.params.id);
+      const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+      await LifeEventService.deleteLifeEvent(id);
       res.json({ message: 'Life event deleted successfully' });
     } catch (err) {
       next(err);

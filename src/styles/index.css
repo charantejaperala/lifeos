@@ -6000,6 +6000,13 @@ h3 {
     flex-shrink: 0 !important;
   }
 
+  /* Header Mobile Compact Controls (Placed AFTER .btn-secondary to prevent override) */
+  .header-ai-btn,
+  button.header-ai-btn,
+  .desktop-only {
+    display: none !important;
+  }
+
   /* Native Mobile Confirm Modal Bottom Sheet */
   .custom-confirm-overlay {
     padding: 0 !important;

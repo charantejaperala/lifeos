@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Goal, LifeEvent, GoalCategory } from './types';
 import {
   fetchGoalsFromDB,
@@ -21,21 +21,30 @@ import { DashboardView } from './components/DashboardView';
 import { GoalsView } from './components/GoalsView';
 import { GoalModal } from './components/GoalModal';
 import { GoalDetailModal } from './components/GoalDetailModal';
-import { ConflictEngineView } from './components/ConflictEngineView';
-import { TimelineView } from './components/TimelineView';
-import { LifeEventsView } from './components/LifeEventsView';
-import { TemplatesView } from './components/TemplatesView';
 import { AskAIModal } from './components/AskAIModal';
-import { AnalyticsView } from './components/AnalyticsView';
-import { CalculatorsView } from './components/CalculatorsView';
-import { FinanceQuizView } from './components/FinanceQuizView';
-import { SuperAdminView } from './components/SuperAdminView';
-import { CATaxAdvisorView } from './components/CATaxAdvisorView';
-import { BankIntegrationsView } from './components/BankIntegrationsView';
 import { NotificationDrawer, NotificationItem } from './components/NotificationDrawer';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import { useAuth } from './context/AuthContext';
 import { printFinancialReport, exportGoalsCSV, exportJSONBackup } from './utils/exportReport';
+
+// Dynamic Lazy Imports for Feature Modules
+const ConflictEngineView = lazy(() => import('./components/ConflictEngineView').then((m) => ({ default: m.ConflictEngineView })));
+const TimelineView = lazy(() => import('./components/TimelineView').then((m) => ({ default: m.TimelineView })));
+const LifeEventsView = lazy(() => import('./components/LifeEventsView').then((m) => ({ default: m.LifeEventsView })));
+const TemplatesView = lazy(() => import('./components/TemplatesView').then((m) => ({ default: m.TemplatesView })));
+const AnalyticsView = lazy(() => import('./components/AnalyticsView').then((m) => ({ default: m.AnalyticsView })));
+const CalculatorsView = lazy(() => import('./components/CalculatorsView').then((m) => ({ default: m.CalculatorsView })));
+const FinanceQuizView = lazy(() => import('./components/FinanceQuizView').then((m) => ({ default: m.FinanceQuizView })));
+const SuperAdminView = lazy(() => import('./components/SuperAdminView').then((m) => ({ default: m.SuperAdminView })));
+const CATaxAdvisorView = lazy(() => import('./components/CATaxAdvisorView').then((m) => ({ default: m.CATaxAdvisorView })));
+const BankIntegrationsView = lazy(() => import('./components/BankIntegrationsView').then((m) => ({ default: m.BankIntegrationsView })));
+
+const ViewLoader: React.FC = () => (
+  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '50vh', flexDirection: 'column', gap: '16px' }}>
+    <div style={{ width: '36px', height: '36px', border: '3px solid rgba(255,255,255,0.1)', borderTopColor: '#3b82f6', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+    <span style={{ color: '#94a3b8', fontSize: '0.875rem', fontWeight: 500 }}>Loading view module...</span>
+  </div>
+);
 
 export function MainAppContent() {
   const { user, token, setShowAuthModal, setAuthView } = useAuth();
@@ -302,114 +311,116 @@ export function MainAppContent() {
           unreadCount={notifications.filter((n) => !n.read).length}
         />
 
-        {activeTab === 'dashboard' && (
-          <DashboardView
-            goals={goals}
-            currency={currency}
-            onOpenCreateModal={() => requireAuth(() => {
-              setSelectedGoal(null);
-              setShowCreateModal(true);
-            })}
-            onSelectGoal={(g) => setSelectedGoal(g)}
-            onNavigateTab={(tab) => setActiveTab(tab)}
-            onOpenAskAI={handleOpenAskAI}
-            monthlySurplusINR={monthlySurplusINR}
-            onDeleteGoal={handleDeleteGoal}
-          />
-        )}
+        <Suspense fallback={<ViewLoader />}>
+          {activeTab === 'dashboard' && (
+            <DashboardView
+              goals={goals}
+              currency={currency}
+              onOpenCreateModal={() => requireAuth(() => {
+                setSelectedGoal(null);
+                setShowCreateModal(true);
+              })}
+              onSelectGoal={(g) => setSelectedGoal(g)}
+              onNavigateTab={(tab) => setActiveTab(tab)}
+              onOpenAskAI={handleOpenAskAI}
+              monthlySurplusINR={monthlySurplusINR}
+              onDeleteGoal={handleDeleteGoal}
+            />
+          )}
 
-        {activeTab === 'goals' && (
-          <GoalsView
-            goals={goals}
-            categories={categories}
-            currency={currency}
-            onOpenCreateModal={() => requireAuth(() => {
-              setSelectedGoal(null);
-              setShowCreateModal(true);
-            })}
-            onSelectGoal={(g) => setSelectedGoal(g)}
-            onAddCustomCategory={handleAddCustomCategory}
-            onDeleteGoal={handleDeleteGoal}
-          />
-        )}
+          {activeTab === 'goals' && (
+            <GoalsView
+              goals={goals}
+              categories={categories}
+              currency={currency}
+              onOpenCreateModal={() => requireAuth(() => {
+                setSelectedGoal(null);
+                setShowCreateModal(true);
+              })}
+              onSelectGoal={(g) => setSelectedGoal(g)}
+              onAddCustomCategory={handleAddCustomCategory}
+              onDeleteGoal={handleDeleteGoal}
+            />
+          )}
 
-        {activeTab === 'conflicts' && (
-          <ConflictEngineView
-            goals={goals}
-            currency={currency}
-            monthlySurplusINR={monthlySurplusINR}
-            onUpdateGoal={handleUpdateGoalDirect}
-          />
-        )}
+          {activeTab === 'conflicts' && (
+            <ConflictEngineView
+              goals={goals}
+              currency={currency}
+              monthlySurplusINR={monthlySurplusINR}
+              onUpdateGoal={handleUpdateGoalDirect}
+            />
+          )}
 
-        {activeTab === 'timeline' && (
-          <TimelineView
-            goals={goals}
-            lifeEvents={lifeEvents}
-            currency={currency}
-            onSelectGoal={(g) => setSelectedGoal(g)}
-            onUpdateGoal={handleUpdateGoalDirect}
-            onDeleteGoal={handleDeleteGoal}
-            onDeleteLifeEvent={handleDeleteLifeEvent}
-          />
-        )}
+          {activeTab === 'timeline' && (
+            <TimelineView
+              goals={goals}
+              lifeEvents={lifeEvents}
+              currency={currency}
+              onSelectGoal={(g) => setSelectedGoal(g)}
+              onUpdateGoal={handleUpdateGoalDirect}
+              onDeleteGoal={handleDeleteGoal}
+              onDeleteLifeEvent={handleDeleteLifeEvent}
+            />
+          )}
 
-        {activeTab === 'events' && (
-          <LifeEventsView
-            lifeEvents={lifeEvents}
-            currency={currency}
-            onAddLifeEvent={(evt) => requireAuth(() => handleAddLifeEvent(evt))}
-            onDeleteLifeEvent={handleDeleteLifeEvent}
-          />
-        )}
+          {activeTab === 'events' && (
+            <LifeEventsView
+              lifeEvents={lifeEvents}
+              currency={currency}
+              onAddLifeEvent={(evt) => requireAuth(() => handleAddLifeEvent(evt))}
+              onDeleteLifeEvent={handleDeleteLifeEvent}
+            />
+          )}
 
-        {activeTab === 'templates' && (
-          <TemplatesView
-            onInstantiateTemplate={(tmpl) => requireAuth(() => handleInstantiateTemplate(tmpl))}
-          />
-        )}
+          {activeTab === 'templates' && (
+            <TemplatesView
+              onInstantiateTemplate={(tmpl) => requireAuth(() => handleInstantiateTemplate(tmpl))}
+            />
+          )}
 
-        {activeTab === 'analytics' && (
-          <AnalyticsView
-            goals={goals}
-            currency={currency}
-          />
-        )}
+          {activeTab === 'analytics' && (
+            <AnalyticsView
+              goals={goals}
+              currency={currency}
+            />
+          )}
 
-        {activeTab === 'calculators' && (
-          <CalculatorsView currency={currency} />
-        )}
+          {activeTab === 'calculators' && (
+            <CalculatorsView currency={currency} />
+          )}
 
-        {activeTab === 'quiz' && (
-          <FinanceQuizView />
-        )}
+          {activeTab === 'quiz' && (
+            <FinanceQuizView />
+          )}
 
-        {activeTab === 'ca-advisor' && (
-          <CATaxAdvisorView currency={currency} />
-        )}
+          {activeTab === 'ca-advisor' && (
+            <CATaxAdvisorView currency={currency} />
+          )}
 
-        {activeTab === 'bank-sync' && (
-          <BankIntegrationsView currency={currency} />
-        )}
+          {activeTab === 'bank-sync' && (
+            <BankIntegrationsView currency={currency} />
+          )}
 
-        {activeTab === 'superadmin' && (
-          <SuperAdminView />
-        )}
+          {activeTab === 'superadmin' && (
+            <SuperAdminView />
+          )}
 
-        {(activeTab === 'budget' || activeTab === 'funding') && (
-          <GoalsView
-            goals={goals}
-            categories={categories}
-            currency={currency}
-            onOpenCreateModal={() => {
-              setSelectedGoal(null);
-              setShowCreateModal(true);
-            }}
-            onSelectGoal={(g) => setSelectedGoal(g)}
-            onAddCustomCategory={handleAddCustomCategory}
-            onDeleteGoal={handleDeleteGoal}
-          />
-        )}
+          {(activeTab === 'budget' || activeTab === 'funding') && (
+            <GoalsView
+              goals={goals}
+              categories={categories}
+              currency={currency}
+              onOpenCreateModal={() => {
+                setSelectedGoal(null);
+                setShowCreateModal(true);
+              }}
+              onSelectGoal={(g) => setSelectedGoal(g)}
+              onAddCustomCategory={handleAddCustomCategory}
+              onDeleteGoal={handleDeleteGoal}
+            />
+          )}
+        </Suspense>
       </div>
 
       {/* Goal Creator / Edit Modal */}

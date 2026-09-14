@@ -4,7 +4,11 @@ import { config } from './env';
 export const connectDB = async (): Promise<void> => {
   try {
     await mongoose.connect(config.mongodbUri, {
+      maxPoolSize: 50,
+      minPoolSize: 5,
       serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 45000,
+      connectTimeoutMS: 10000,
     });
     console.log('⚡ Connected to MongoDB Cluster successfully!');
     

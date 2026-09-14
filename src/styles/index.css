@@ -5795,6 +5795,38 @@ h3 {
   outline-offset: 2px !important;
 }
 
+/* Keyframes for loading spinner */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Table & Grid Wrappers */
+.table-responsive, .table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid, .goals-grid, .calculators-grid, .quiz-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .table-responsive table {
+    min-width: 600px;
+  }
+
+  .modal-content, .drawer-content {
+    max-width: 95vw !important;
+    margin: 0 auto;
+  }
+}
+
 /* Accessibility: Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {

@@ -13,13 +13,28 @@ import { CategoryModel } from '../models/Category.model';
 
 const apiRouter = Router();
 
-// Healthcheck
+// Health & Telemetry Endpoints
 apiRouter.get('/health', (req, res) => {
+  const memoryUsage = process.memoryUsage();
   res.json({
     status: 'ok',
-    db: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
+    uptimeSeconds: Math.floor(process.uptime()),
+    database: {
+      status: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
+      readyState: mongoose.connection.readyState,
+    },
+    memory: {
+      rssMB: Math.round(memoryUsage.rss / 1024 / 1024),
+      heapTotalMB: Math.round(memoryUsage.heapTotal / 1024 / 1024),
+      heapUsedMB: Math.round(memoryUsage.heapUsed / 1024 / 1024),
+    },
+    environment: process.env.NODE_ENV || 'development',
     timestamp: new Date().toISOString(),
   });
+});
+
+apiRouter.get('/ping', (req, res) => {
+  res.send('pong');
 });
 
 // Domain Routes
